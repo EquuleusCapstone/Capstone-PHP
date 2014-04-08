@@ -1,11 +1,12 @@
 <?php
-/*This page, AttendMeeting.php, is used to update the visible name associated to a user id. 
+/*This page, AttendMeeting.php, is used to confirm attendance to a specific meeting.
  * It requires 2 arguments: meeting_id and user_id
  */
 
 $connection = mysql_connect("localhost", "root", "PASSWORD");
-//This query will give us the user id associated with an email
-$query="INSERT INTO Attendees (meeting_id, user_id) VALUES (".$_GET["meeting_id"].", ".$_GET["user_id"].")";
+//This query changes the accepted field to be '1', to signify attendance
+$query="UPDATE Attendees SET accepted=1 WHERE user_id=".$_GET["user_id"]
+            ." AND meeting_id=".$_GET["meeting_id"]." LIMIT 1";
 if (!$connection) {
     echo "Connection to database failed: ".mysql_error();
     exit;
