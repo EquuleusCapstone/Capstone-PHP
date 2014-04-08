@@ -16,7 +16,7 @@ if (!mysql_select_db("Capstone")) {
     exit;
 }
 
-//Now we try to add the record
+//Now we try to update the record
 $result = mysql_query($query);
 if (!$result) {
     echo "Unable to run query \"".$query." from database: ". mysql_error();
