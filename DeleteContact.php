@@ -8,7 +8,7 @@
 */
 $connection = mysql_connect("localhost", "root", "PASSWORD");
 $query = "DELETE FROM Contacts WHERE Contacts.user_id_c = ".$_GET["user_id"].
-         " AND Contacts.friend_id =".$_GET["friend_id"];
+         " AND Contacts.friend_id =".$_GET["friend_id"]." LIMIT 1";
 
  if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
