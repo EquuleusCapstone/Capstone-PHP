@@ -5,6 +5,7 @@
  * visible on github.
 */
 $connection = mysql_connect("localhost", "root", "PASSWORD");
+$removeOldTimes ="DELETE FROM Events WHERE unavailable_end < CURRENT_TIMESTAMP";
 $query = "SELECT e.unavailable_start, e.unavailable_end FROM Events e WHERE "
         ."e.user_id_e =".$_GET["user_id"];
 if (!$connection) {
@@ -16,7 +17,11 @@ if (!mysql_select_db("Capstone")) {
     echo "Unable to select Capstone: ".mysql_error();
     exit;
 }
-
+//Don't bother checking if this executed. The only way this would fail to execute
+//is if we can't connect to the DB, since it uses no user input. All we want to do
+// is purge outdated time slots from our database before we return the rest.
+$deletionResult = mysql_query($removeOldTimes);
+//This result, on the other hand, needs to be checked for completion.
 $result = mysql_query($query);
 //Something went wrong. 
 if (!$result) {
@@ -30,4 +35,5 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 //echo "</unavailable_times>\n";
 mysql_free_result($result);
+mysql_free_result($deletionResult);
 ?>}
