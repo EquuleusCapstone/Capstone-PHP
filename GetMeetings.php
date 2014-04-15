@@ -21,7 +21,7 @@ if (!mysql_select_db("Capstone")) {
     exit;
 }
 //Remove expired meetings from the database
-$deletionResult = mysql_query($removeOldTimes);
+$deletionResult = mysql_query($removeOldMeetings);
 //Run our main query after the database has its old meetings removed
 $result = mysql_query($query);
 if (!$result) {//Argument wasn't provided, or was formatted incorrectly (should be an int)
