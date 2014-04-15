@@ -10,6 +10,8 @@ $connection = mysql_connect("localhost", "root", "PASSWORD");
 $query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.description
 FROM Users U, Meetings M, Attendees A
 WHERE A.user_id = ".$_GET["user_id"]." AND A.meeting_id = M.meeting_id AND A.accepted = 1 AND M.owner = U.user_id";
+//This is used to take old meetings out of the database whenever meetings are requested
+$removeOldMeetings ="DELETE FROM Meetings WHERE end < CURRENT_TIMESTAMP";
 if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
     exit;
@@ -18,9 +20,11 @@ if (!mysql_select_db("Capstone")) {
     echo "Unable to select Capstone: ".mysql_error();
     exit;
 }
+//Remove expired meetings from the database
+$deletionResult = mysql_query($removeOldTimes);
+//Run our main query after the database has its old meetings removed
 $result = mysql_query($query);
-
-if (!$result) {//There's only 1 argument! How did you incorrectly enter 1 argument?
+if (!$result) {//Argument wasn't provided, or was formatted incorrectly (should be an int)
     echo "Unable to run query \"".$query." from database: ". mysql_error();
     exit;
 }
@@ -35,4 +39,5 @@ while ($row = mysql_fetch_assoc($result)) {
     echo $row["description"]."\n";
 }
 mysql_free_result($result);
+mysql_free_result($deletionResult);
 ?>}
