@@ -1,12 +1,7 @@
 <?php
 /*This page, GetMeetings.php, takes a user_id as an argument and returns a 
- * list of meetings that this user is attending.
- * Depending on how we decide to implement this, we might want to use this to
- * instead display all meetings that a user is invited to or attending once the
- * application has progressed to that point. As of 1/20/14, however, it only shows
- * meetings that the user is going to be at. 
- * Connecting to the actual database has been withdrawn, since this will be publicly
- * visible on github.
+ * list of meetings that this user is attending, signified by the meeting being
+ * marked as "accepted" in the database.
 */
 $connection = mysql_connect("localhost", "root", "PASSWORD");
 //This query will find all meetings that the supplied user is attending, then 
@@ -14,7 +9,7 @@ $connection = mysql_connect("localhost", "root", "PASSWORD");
 //meeting. 
 $query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.description
 FROM Users U, Meetings M, Attendees A
-WHERE A.user_id = ".$_GET["user_id"]." AND A.meeting_id = M.meeting_id AND M.owner = U.user_id";
+WHERE A.user_id = ".$_GET["user_id"]." AND A.meeting_id = M.meeting_id AND A.accepted = 1 AND M.owner = U.user_id";
 if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
     exit;
