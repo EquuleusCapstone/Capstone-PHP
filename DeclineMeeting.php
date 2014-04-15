@@ -1,6 +1,7 @@
 <?php
 /*This page, DeclineMeeting.php, is used to signify the user will not be attending
  * the meeting that they are invited to.
+ * This file should also be used to allow a user to remove themself from a meeting.
  * It requires 2 arguments: meeting_id and user_id
  */
 
