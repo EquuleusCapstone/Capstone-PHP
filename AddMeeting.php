@@ -39,8 +39,19 @@ else { //The query was a success, so we need to return the meeting_id of the new
         exit;
     }
     while ($row = mysql_fetch_assoc($id_result)){
-	echo $row["meeting_id"];
-	}
+        //Add the meeting creator to the attending list for their meeting, so that
+        //it will appear on their meetings screen.
+        $ownerAttendance = "INSERT INTO Attendees (meeting_id, user_id, accepted) VALUES (".$row["meeting_id"].", ".$_GET["owner"].", 1)";
+        $attendResult = mysql_query($ownerAttendance);
+        if (!$attendResult) { //for some reason, the above query was unsuccessful.
+            echo "Meeting was created, but something failed when we tried to add it to your meetings tab.\n".mysql_error();
+            exit;
+        }
+        else { //If everything went well, give the id of the newly created meeting
+            echo $row["meeting_id"];
+            mysql_free_result($attendResult);
+        }        
+   }
 }
 echo "\n";
 mysql_free_result($result);
