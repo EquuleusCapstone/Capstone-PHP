@@ -7,7 +7,7 @@ $connection = mysql_connect("localhost", "root", "PASSWORD");
 //This query will find all meetings that the supplied user is attending, then 
 //match that with information about the meeting itself and the person running the 
 //meeting. 
-$query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.description
+$query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.description, M.meeting_id
 FROM Users U, Meetings M, Attendees A
 WHERE A.user_id = ".$_GET["user_id"]." AND A.meeting_id = M.meeting_id AND A.accepted = 1 AND M.owner = U.user_id";
 //This is used to take old meetings out of the database whenever meetings are requested
@@ -30,6 +30,7 @@ if (!$result) {//Argument wasn't provided, or was formatted incorrectly (should 
 }
 
 while ($row = mysql_fetch_assoc($result)) {
+    echo $row["meeting_id"]."\n";
     echo $row["f_name"]."\n";
     echo $row["l_name"]."\n";
     echo $row["email"]."\n";
