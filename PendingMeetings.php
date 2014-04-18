@@ -26,7 +26,7 @@ if (!$result) { //in the database (invalid id) it still won't throw this error
 }
 
 while ($row = mysql_fetch_assoc($result)) {
-    echo $row["meeting_id"];
+    echo $row["meeting_id"]."\n";
     echo $row["f_name"]."\n";
     echo $row["l_name"]."\n";
     echo $row["email"]."\n";
