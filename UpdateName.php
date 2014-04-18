@@ -6,7 +6,7 @@
 
 $fname; 
 $lname;
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //This query will give us the user id associated with an email
 $fname = $_GET["f_name"];
 $lname = $_GET["l_name"];

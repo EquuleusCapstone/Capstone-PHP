@@ -3,7 +3,7 @@
  * list of meetings that this user is attending, signified by the meeting being
  * marked as "accepted" in the database.
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //This query will find all meetings that the supplied user is attending, then 
 //match that with information about the meeting itself and the person running the 
 //meeting. 

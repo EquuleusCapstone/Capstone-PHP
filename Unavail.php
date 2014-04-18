@@ -4,7 +4,7 @@
  * Connecting to the actual database has been withdrawn, since this will be publicly
  * visible on github.
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 $removeOldTimes ="DELETE FROM Events WHERE unavailable_end < CURRENT_TIMESTAMP";
 $query = "SELECT e.unavailable_start, e.unavailable_end FROM Events e WHERE "
         ."e.user_id_e =".$_GET["user_id"];

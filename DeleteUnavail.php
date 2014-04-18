@@ -5,7 +5,7 @@
  * Connecting to the actual database has been withdrawn, since this will be publicly
  * visible on github.
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 $query = "DELETE FROM Events WHERE user_id_e = ".$_GET[user_id].
         " AND unavailable_start = ".$_GET["start"].
         " AND unavailable_end = ". $_GET["end"]. " LIMIT 1";

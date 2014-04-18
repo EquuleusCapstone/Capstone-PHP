@@ -9,7 +9,7 @@
  * Connecting to the actual database has been withdrawn, since this will be publicly
  * visible on github.
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 $query = "INSERT INTO Meetings (meeting_id, owner, start, end, created, description) VALUES ("
          ."NULL".", ".$_GET["owner"].", ".$_GET["start"].", ".$_GET["end"].", "
         ."CURRENT_TIMESTAMP".", ".$_GET["description"].")";

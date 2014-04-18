@@ -3,7 +3,7 @@
  * It requires 2 arguments: meeting_id and user_id
  */
 
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //This query inserts the user IDs of invited users into a table, linking them with a meeting
 $query="INSERT INTO Attendees (meeting_id, user_id, accepted) VALUES (".$_GET["meeting_id"].", ".$_GET["user_id"].", 0)";
 if (!$connection) {

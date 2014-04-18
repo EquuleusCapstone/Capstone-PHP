@@ -5,7 +5,7 @@
  * It requires 2 arguments: meeting_id and user_id
  */
 
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //This query changes the accepted field to be '-1', to signify declining
 //NOTE: Should this instead delete the column, rather than making it -1?
 //-1 allows meeting owners to see who has declined, but simply deleting the row

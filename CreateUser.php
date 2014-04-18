@@ -2,7 +2,7 @@
 // This page, CreateUser.php, generates a user ID for an inputted 
 // f_name, l_name and email.
 
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //This query will insert a new user's ID and information into the user's
 //table
 

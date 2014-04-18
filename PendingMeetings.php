@@ -3,7 +3,7 @@
  * list of meetings that this user is invited to, signified by the accepted column
  * in the database being marked as a 0
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //This query will find all meetings that the supplied user needs to give a response
 // to. This query will be used on the meeting invitations page of the application.
 $query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.description, M.meeting_id

@@ -5,7 +5,7 @@
  * Connecting to the actual database has been withdrawn, since this will be publicly
  * visible on github.
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 $query = "SELECT * FROM Meetings m WHERE m.owner=".$_GET['user_id'];
 
 if (!$connection) {

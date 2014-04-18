@@ -7,7 +7,7 @@
 */
 
 $friendID;
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //This query will give us the user id associated with an email
 $idQuery = "SELECT u.user_id FROM Users u WHERE u.email=".$_GET["email"];
 

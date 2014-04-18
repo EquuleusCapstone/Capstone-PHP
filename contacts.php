@@ -4,7 +4,7 @@
  * Connecting to the actual database has been withdrawn, since this will be publicly
  * visible on github.
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 $query = "SELECT u.user_id, u.email, u.f_name, u.l_name FROM Users u, Contacts c "
         . "WHERE c.user_id_c ='". $_GET['user_id']. "' AND c.friend_id =u.user_id";
 if (!$connection) {

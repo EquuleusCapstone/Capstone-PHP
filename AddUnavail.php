@@ -5,7 +5,7 @@
  * Connecting to the actual database has been withdrawn, since this will be publicly
  * visible on github.
 */
-$connection = mysql_connect("localhost", "root", "PASSWORD");
+$connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 $query = "INSERT INTO Events (user_id_e, unavailable_start, unavailable_end)"
         . "VALUES (".$_GET["user_id"].",".$_GET["start"].",".$_GET["end"].")";
 if (!$connection) {
