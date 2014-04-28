@@ -7,7 +7,7 @@
 $connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 $removeOldTimes ="DELETE FROM Events WHERE unavailable_end < CURRENT_TIMESTAMP";
 $query = "SELECT e.unavailable_start, e.unavailable_end FROM Events e WHERE "
-        ."e.user_id_e =".$_GET["user_id"];
+        ."e.user_id_e =".$_GET["user_id"]." ORDER BY e.unavailable_start ASC";
 if (!$connection) {
     echo "Connection to database failed: ". mysql_error();
     exit;
