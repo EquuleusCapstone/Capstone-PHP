@@ -23,11 +23,11 @@ if (!$result) {
 }
 
 while ($row = mysql_fetch_assoc($result)) {
-    echo $result["meeting_id"]."\n";
-    echo $result["start"]."\n";
-    echo $result["end"]."\n";
-    echo $result["created"]."\n";
-    echo $result["description"]."\n";
+    echo $row["meeting_id"]."\n";
+    echo $row["start"]."\n";
+    echo $row["end"]."\n";
+    echo $row["created"]."\n";
+    echo $row["description"]."\n";
 }
 mysql_free_result($result);
 ?>}
