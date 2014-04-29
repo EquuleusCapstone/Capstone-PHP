@@ -9,7 +9,8 @@ $connection = mysql_connect("localhost", "dataOnly", "PASSWORD");
 //meeting. 
 $query = "SELECT U.f_name, U.l_name, U.email, M.start, M.end, M.created, M.description, M.meeting_id
 FROM Users U, Meetings M, Attendees A
-WHERE A.user_id = ".$_GET["user_id"]." AND A.meeting_id = M.meeting_id AND A.accepted = 1 AND M.owner = U.user_id";
+WHERE A.user_id = ".$_GET["user_id"]." AND A.meeting_id = M.meeting_id AND A.accepted = 1 AND M.owner = U.user_id".
+        " ORDER BY M.start ASC";
 //This is used to take old meetings out of the database whenever meetings are requested
 $removeOldMeetings ="DELETE FROM Meetings WHERE end < CURRENT_TIMESTAMP";
 if (!$connection) {
